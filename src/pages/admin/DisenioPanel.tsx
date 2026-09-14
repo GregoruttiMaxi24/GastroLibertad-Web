@@ -19,6 +19,11 @@ const CAMPOS: { key: keyof ConfiguracionSitio; label: string; ayuda: string }[] 
     ayuda: 'La foto chica de arriba a la derecha, al lado del hero.',
   },
   {
+    key: 'tileVariedad',
+    label: 'Tile "Tenemos variedad de artículos"',
+    ayuda: 'La foto de abajo a la derecha, la del cartel de bicicletas/colchones/muebles.',
+  },
+  {
     key: 'tileCampanas',
     label: 'Tile "Campanas extractoras"',
     ayuda: 'Primera foto de la fila de 3 categorías, debajo del hero.',

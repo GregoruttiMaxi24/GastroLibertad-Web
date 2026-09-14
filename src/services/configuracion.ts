@@ -13,6 +13,7 @@ export async function obtenerConfiguracion(): Promise<ConfiguracionSitio> {
     return {
       heroImagen: data.hero_imagen,
       tileCocinas: data.tile_cocinas,
+      tileVariedad: data.tile_variedad,
       tileCampanas: data.tile_campanas,
       tileElectro: data.tile_electro,
       tileAccesorios: data.tile_accesorios,
@@ -30,6 +31,7 @@ export async function actualizarConfiguracion(
       id: 'home',
       hero_imagen: config.heroImagen,
       tile_cocinas: config.tileCocinas,
+      tile_variedad: config.tileVariedad,
       tile_campanas: config.tileCampanas,
       tile_electro: config.tileElectro,
       tile_accesorios: config.tileAccesorios,

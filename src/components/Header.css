@@ -107,22 +107,6 @@
   gap: 32px;
 }
 
-.site-nav__brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-right: 4px;
-  text-decoration: none;
-  color: #fff;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.site-nav__brand span {
-  display: none;
-}
-
 .site-nav a {
   display: inline-block;
   padding: 13px 0;
@@ -179,15 +163,6 @@
   .site-nav__inner {
     flex-direction: column;
     gap: 0;
-  }
-
-  .site-nav__brand {
-    padding: 14px 24px;
-    border-bottom: 1px solid #2a2d35;
-  }
-
-  .site-nav__brand span {
-    display: inline;
   }
 
   .site-nav a {

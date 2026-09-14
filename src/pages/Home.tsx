@@ -80,7 +80,9 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               className="hero__tile hero__tile--callout"
+              style={{ backgroundImage: `url(${config.tileVariedad})` }}
             >
+              <div className="hero__tile-overlay hero__tile-overlay--callout" />
               <span className="hero__tile-text hero__tile-text--callout">
                 Tenemos variedad de artículos
                 <small>

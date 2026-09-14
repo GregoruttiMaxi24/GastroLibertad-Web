@@ -37,6 +37,7 @@ create table if not exists configuracion (
   id text primary key default 'home',
   hero_imagen text,
   tile_cocinas text,
+  tile_variedad text,
   tile_campanas text,
   tile_electro text,
   tile_accesorios text,

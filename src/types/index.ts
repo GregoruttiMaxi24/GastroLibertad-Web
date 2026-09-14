@@ -44,6 +44,7 @@ export interface Testimonio {
 export interface ConfiguracionSitio {
   heroImagen: string
   tileCocinas: string
+  tileVariedad: string
   tileCampanas: string
   tileElectro: string
   tileAccesorios: string

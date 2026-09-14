@@ -128,14 +128,18 @@
 }
 
 .hero__tile--callout {
-  background: linear-gradient(135deg, #ec4899 0%, #f97316 50%, #2563eb 100%);
   display: flex;
   align-items: flex-end;
   padding: 0;
 }
 
-.hero__tile--callout:hover {
-  background-position: center;
+.hero__tile-overlay--callout {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 72, 153, 0.82) 0%,
+    rgba(249, 115, 22, 0.78) 50%,
+    rgba(37, 99, 235, 0.85) 100%
+  );
 }
 
 .hero__tile-text--callout {

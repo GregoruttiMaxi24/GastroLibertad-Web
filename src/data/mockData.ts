@@ -374,6 +374,7 @@ export let TESTIMONIOS: Testimonio[] = [
 export let CONFIGURACION: ConfiguracionSitio = {
   heroImagen: 'https://images.pexels.com/photos/10827395/pexels-photo-10827395.jpeg?auto=compress&cs=tinysrgb&w=1200',
   tileCocinas: 'https://images.pexels.com/photos/7601144/pexels-photo-7601144.jpeg?auto=compress&cs=tinysrgb&w=800',
+  tileVariedad: 'https://images.pexels.com/photos/5490931/pexels-photo-5490931.jpeg?auto=compress&cs=tinysrgb&w=800',
   tileCampanas: 'https://images.pexels.com/photos/12119355/pexels-photo-12119355.jpeg?auto=compress&cs=tinysrgb&w=800',
   tileElectro: 'https://images.pexels.com/photos/6835124/pexels-photo-6835124.jpeg?auto=compress&cs=tinysrgb&w=800',
   tileAccesorios: 'https://images.pexels.com/photos/5782042/pexels-photo-5782042.jpeg?auto=compress&cs=tinysrgb&w=800',
