@@ -1,0 +1,241 @@
+/* ---------- Login ---------- */
+
+.admin-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ink);
+  padding: 24px;
+}
+
+.admin-login__card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-login__sub {
+  color: var(--color-ink-soft);
+  margin-top: -8px;
+}
+
+.admin-login__aviso {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.admin-login__error {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.admin-login label,
+.admin-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.admin-login input,
+.admin-panel input,
+.admin-panel select,
+.admin-panel textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+/* ---------- Panel ---------- */
+
+.admin-panel {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.admin-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.admin-panel__brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-ink);
+  margin-right: 16px;
+}
+
+.admin-panel__user {
+  color: var(--color-ink-soft);
+  font-size: 0.85rem;
+}
+
+.admin-panel__tabs {
+  display: flex;
+  gap: 8px;
+  padding: 20px 32px 0;
+}
+
+.admin-panel__tabs button {
+  border: 1px solid var(--color-line);
+  border-bottom: none;
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.admin-panel__tabs button.is-active {
+  color: var(--color-ink);
+  background: var(--color-bg);
+  border-color: var(--color-line);
+}
+
+.admin-panel__content {
+  padding: 28px 32px 48px;
+}
+
+.admin-panel__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.admin-panel__hint {
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  max-width: 60ch;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  color: var(--color-ink-soft);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: none;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table__stock {
+  border: none;
+  cursor: pointer;
+}
+
+.admin-table__acciones {
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.admin-table__comentario {
+  max-width: 340px;
+}
+
+/* ---------- Modal ---------- */
+
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(34, 31, 27, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 24px;
+}
+
+.admin-modal__card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin-modal__checkbox {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px !important;
+}
+
+.admin-modal__acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* ---------- Panel de Diseño ---------- */
+
+.disenio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.disenio-campo {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  background: var(--color-surface);
+}
+
+.disenio-campo__ayuda {
+  font-size: 0.78rem;
+  color: var(--color-ink-soft);
+  margin: 10px 0 0;
+}
