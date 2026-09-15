@@ -133,26 +133,6 @@
   padding: 0;
 }
 
-.hero__tile-overlay--callout {
-  background: linear-gradient(
-    135deg,
-    rgba(236, 72, 153, 0.82) 0%,
-    rgba(249, 115, 22, 0.78) 50%,
-    rgba(37, 99, 235, 0.85) 100%
-  );
-}
-
-.hero__tile-text--callout {
-  position: static;
-  padding: 18px;
-  color: #fff;
-}
-
-.hero__tile-text--callout small {
-  color: rgba(255, 255, 255, 0.92);
-  max-width: 34ch;
-}
-
 .hero__row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

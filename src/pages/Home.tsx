@@ -82,8 +82,8 @@ export default function Home() {
               className="hero__tile hero__tile--callout"
               style={{ backgroundImage: `url(${config.tileVariedad})` }}
             >
-              <div className="hero__tile-overlay hero__tile-overlay--callout" />
-              <span className="hero__tile-text hero__tile-text--callout">
+              <div className="hero__tile-overlay" />
+              <span className="hero__tile-text">
                 Tenemos variedad de artículos
                 <small>
                   Bicicletas, colchones, muebles, parlantes y más — consultanos →
