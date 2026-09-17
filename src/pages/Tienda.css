@@ -32,8 +32,10 @@
   align-items: start;
 }
 
-.tienda__sidebar h4 {
+.tienda__sidebar h2 {
   font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--color-ink-soft);

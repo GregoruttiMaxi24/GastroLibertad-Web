@@ -1,12 +1,18 @@
-import type { Producto, Testimonio, Categoria, Especificacion, ConfiguracionSitio } from '../types'
+import type { Producto, Testimonio, Especificacion, ConfiguracionSitio, CategoriaItem } from '../types'
 
-export const CATEGORIAS: { value: Categoria; label: string }[] = [
-  { value: 'cocinas-a-gas', label: 'Cocinas a gas' },
-  { value: 'cocinas-electricas', label: 'Cocinas eléctricas' },
-  { value: 'campanas', label: 'Campanas extractoras' },
-  { value: 'electrodomesticos', label: 'Electrodomésticos' },
-  { value: 'accesorios', label: 'Accesorios para el hogar' },
+export let CATEGORIAS: CategoriaItem[] = [
+  { id: 'cocinas-a-gas', valor: 'cocinas-a-gas', etiqueta: 'Cocinas a gas', orden: 1 },
+  { id: 'cocinas-electricas', valor: 'cocinas-electricas', etiqueta: 'Cocinas eléctricas', orden: 2 },
+  { id: 'campanas', valor: 'campanas', etiqueta: 'Campanas extractoras', orden: 3 },
+  { id: 'electrodomesticos', valor: 'electrodomesticos', etiqueta: 'Electrodomésticos', orden: 4 },
+  { id: 'accesorios', valor: 'accesorios', etiqueta: 'Accesorios para el hogar', orden: 5 },
+  { id: 'bicicletas', valor: 'bicicletas', etiqueta: 'Bicicletas', orden: 6 },
+  { id: 'audio', valor: 'audio', etiqueta: 'Audio y Parlantes', orden: 7 },
 ]
+
+export function setMockCategorias(categorias: CategoriaItem[]) {
+  CATEGORIAS = categorias
+}
 
 const NOTA_GARANTIA = 'Todos nuestros productos cuentan con 6 meses de garantía.'
 const NOTA_STOCK = 'Antes de realizar la compra, consultar stock disponible.'

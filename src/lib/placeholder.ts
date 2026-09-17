@@ -1,6 +1,4 @@
-import type { Categoria } from '../types'
-
-type Clave = Categoria | 'hero' | 'nosotros' | 'campanas-tile' | 'electro-tile' | 'accesorios-tile'
+type Clave = string
 
 const ICONOS: Record<string, string> = {
   'cocinas-a-gas':
@@ -19,6 +17,10 @@ const ICONOS: Record<string, string> = {
     '<path d="M-22,-16 L22,-16 L28,34 L-28,34 Z" /><path d="M-12,-16 C-12,-32 12,-32 12,-16" />',
   'accesorios-tile':
     '<path d="M-22,-16 L22,-16 L28,34 L-28,34 Z" /><path d="M-12,-16 C-12,-32 12,-32 12,-16" />',
+  bicicletas:
+    '<circle cx="-24" cy="20" r="14" /><circle cx="24" cy="20" r="14" /><path d="M-24,20 L-6,-10 L24,20 M-6,-10 L6,-10 L18,20 M-6,-10 L-16,-22 L-26,-22" />',
+  audio:
+    '<circle cx="0" cy="0" r="34" /><circle cx="0" cy="0" r="12" /><circle cx="0" cy="0" r="3" fill="#fff" stroke="none" />',
   hero: '<path d="M-38,10 L0,-30 L38,10 L38,42 L-38,42 Z" /><rect x="-10" y="14" width="20" height="28" />',
   nosotros:
     '<path d="M-38,10 L0,-30 L38,10 L38,42 L-38,42 Z" /><rect x="-10" y="14" width="20" height="28" />',
@@ -33,6 +35,8 @@ const COLORES: Record<string, [string, string]> = {
   'electro-tile': ['#0f766e', '#2dd4bf'],
   accesorios: ['#6d28d9', '#c084fc'],
   'accesorios-tile': ['#6d28d9', '#c084fc'],
+  bicicletas: ['#b45309', '#f59e0b'],
+  audio: ['#be123c', '#fb7185'],
   hero: ['#ec4899', '#2563eb'],
   nosotros: ['#ec4899', '#2563eb'],
 }
@@ -75,7 +79,7 @@ export function placeholderImage(clave: Clave, etiqueta = ''): string {  const [
 // ninguna foto (por ejemplo, un producto recién creado desde el Admin).
 export function imagenesConFallback(
   imagenes: string[],
-  categoria: Categoria,
+  categoria: string,
   nombre: string
 ): string[] {
   return imagenes.length > 0 ? imagenes : [placeholderImage(categoria, nombre)]

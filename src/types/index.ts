@@ -1,9 +1,9 @@
-export type Categoria =
-  | 'cocinas-a-gas'
-  | 'cocinas-electricas'
-  | 'campanas'
-  | 'electrodomesticos'
-  | 'accesorios'
+export interface CategoriaItem {
+  id: string
+  valor: string
+  etiqueta: string
+  orden: number
+}
 
 export interface Especificacion {
   label: string
@@ -13,7 +13,7 @@ export interface Especificacion {
 export interface Producto {
   id: string
   nombre: string
-  categoria: Categoria
+  categoria: string
   precio: number
   precioOriginal: number | null
   rating: number

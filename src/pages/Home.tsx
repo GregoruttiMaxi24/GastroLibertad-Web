@@ -8,15 +8,23 @@ import Reveal from '../components/Reveal'
 import { IconAward, IconUsers, IconStar, IconTruck, IconWhatsApp } from '../components/Icons'
 import type { Producto, Testimonio, ConfiguracionSitio } from '../types'
 import { CONFIGURACION } from '../data/mockData'
+import { useDocumentMeta } from '../hooks/useDocumentMeta'
+import { useCategorias } from '../hooks/useCategorias'
 import './Home.css'
 
 const WHATSAPP_URL =
   'https://wa.me/5491132527581?text=%C2%A1Hola%20Gastrolibertad!%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20productos.'
 
 export default function Home() {
+  useDocumentMeta(
+    'Cocinas, campanas y electrodomésticos en Merlo',
+    'Cocinas a gas y eléctricas, campanas extractoras y equipamiento para el hogar en Libertad, Merlo. Consultá stock por WhatsApp y recibí en Capital Federal y Zona Oeste del GBA.'
+  )
+
   const [productos, setProductos] = useState<Producto[]>([])
   const [testimonios, setTestimonios] = useState<Testimonio[]>([])
   const [config, setConfig] = useState<ConfiguracionSitio>(CONFIGURACION)
+  const { categorias } = useCategorias()
 
   useEffect(() => {
     listarProductos().then(setProductos)
@@ -172,7 +180,7 @@ export default function Home() {
           <div className="product-grid">
             {ofertas.map((p, i) => (
               <Reveal key={p.id} delay={i * 60}>
-                <ProductCard producto={p} />
+                <ProductCard producto={p} categoriaLabel={categorias.find((c) => c.valor === p.categoria)?.etiqueta} />
               </Reveal>
             ))}
           </div>
@@ -192,7 +200,7 @@ export default function Home() {
           <div className="product-grid">
             {destacados.map((p, i) => (
               <Reveal key={p.id} delay={i * 60}>
-                <ProductCard producto={p} />
+                <ProductCard producto={p} categoriaLabel={categorias.find((c) => c.valor === p.categoria)?.etiqueta} />
               </Reveal>
             ))}
           </div>

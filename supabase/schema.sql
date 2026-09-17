@@ -44,9 +44,18 @@ create table if not exists configuracion (
   nosotros_imagen text
 );
 
+-- Categorías de productos. Se editan desde /admin, pestaña "Categorías".
+create table if not exists categorias (
+  id uuid primary key default gen_random_uuid(),
+  valor text not null unique,
+  etiqueta text not null,
+  orden integer not null default 0
+);
+
 alter table productos enable row level security;
 alter table testimonios enable row level security;
 alter table configuracion enable row level security;
+alter table categorias enable row level security;
 
 -- Lectura pública (para que la tienda y la home puedan mostrar productos
 -- y reseñas sin necesidad de estar logueado).
@@ -60,6 +69,10 @@ create policy "Lectura pública de testimonios"
 
 create policy "Lectura pública de configuración"
   on configuracion for select
+  using (true);
+
+create policy "Lectura pública de categorías"
+  on categorias for select
   using (true);
 
 -- Escritura solo para usuarios autenticados (los admins que crees en
@@ -76,6 +89,11 @@ create policy "Admins pueden escribir testimonios"
 
 create policy "Admins pueden escribir configuración"
   on configuracion for all
+  using (auth.role() = 'authenticated')
+  with check (auth.role() = 'authenticated');
+
+create policy "Admins pueden escribir categorías"
+  on categorias for all
   using (auth.role() = 'authenticated')
   with check (auth.role() = 'authenticated');
 

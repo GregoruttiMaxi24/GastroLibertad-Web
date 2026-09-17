@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { obtenerProducto } from '../services/productos'
-import { CATEGORIAS } from '../data/mockData'
+import { useCategorias } from '../hooks/useCategorias'
 import ProductGallery from '../components/ProductGallery'
 import Reveal from '../components/Reveal'
 import { imagenesConFallback } from '../lib/placeholder'
@@ -28,6 +28,7 @@ export default function ProductoDetalle() {
   const { id } = useParams<{ id: string }>()
   const [producto, setProducto] = useState<Producto | null>(null)
   const [cargando, setCargando] = useState(true)
+  const { categorias } = useCategorias()
 
   useEffect(() => {
     if (!id) return
@@ -60,9 +61,9 @@ export default function ProductoDetalle() {
   const mensaje = encodeURIComponent(
     `¡Hola Gastrolibertad! Quiero consultar por: ${producto.nombre}`
   )
-  const categoriaLabel = CATEGORIAS.find(
-    (c) => c.value === producto.categoria
-  )?.label
+  const categoriaLabel = categorias.find(
+    (c) => c.valor === producto.categoria
+  )?.etiqueta
 
   return (
     <section className="container producto-detalle">
@@ -168,7 +169,7 @@ export default function ProductoDetalle() {
           </div>
 
           <div className="producto-detalle__info-importante">
-            <h3>Información importante</h3>
+            <h2>Información importante</h2>
             <ul>
               {producto.notasImportantes.map((nota) => (
                 <li key={nota}>{nota}</li>

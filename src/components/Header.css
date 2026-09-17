@@ -60,11 +60,17 @@
 
 .site-header__info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   color: var(--color-ink-soft);
   font-size: 0.82rem;
-  max-width: 220px;
+  max-width: 240px;
+  padding-top: 2px;
+}
+
+.site-header__info svg {
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .site-header__social {

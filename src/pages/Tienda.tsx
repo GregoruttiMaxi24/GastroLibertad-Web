@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { listarProductos } from '../services/productos'
-import { CATEGORIAS } from '../data/mockData'
+import { useCategorias } from '../hooks/useCategorias'
 import ProductCard from '../components/ProductCard'
 import type { Producto } from '../types'
 import './Tienda.css'
@@ -12,6 +12,7 @@ const PRECIO_MAX = 700000
 export default function Tienda() {
   const [productos, setProductos] = useState<Producto[]>([])
   const [cargando, setCargando] = useState(true)
+  const { categorias } = useCategorias()
   const [params, setParams] = useSearchParams()
   const catActiva = params.get('cat') ?? ''
   const busqueda = (params.get('buscar') ?? '').toLowerCase()
@@ -52,7 +53,7 @@ export default function Tienda() {
 
       <div className="tienda__layout">
         <aside className="tienda__sidebar">
-          <h4>Categorías</h4>
+          <h2>Categorías</h2>
           <ul className="tienda__cats">
             <li>
               <button
@@ -62,20 +63,20 @@ export default function Tienda() {
                 Todos los productos
               </button>
             </li>
-            {CATEGORIAS.map((c) => (
-              <li key={c.value}>
+            {categorias.map((c) => (
+              <li key={c.id}>
                 <button
-                  className={catActiva === c.value ? 'is-active' : ''}
-                  onClick={() => elegirCategoria(c.value)}
+                  className={catActiva === c.valor ? 'is-active' : ''}
+                  onClick={() => elegirCategoria(c.valor)}
                 >
-                  {c.label}
+                  {c.etiqueta}
                 </button>
               </li>
             ))}
           </ul>
 
           <div className="tienda__precio">
-            <h4>Precio</h4>
+            <h2>Precio</h2>
             <p className="tienda__precio-valor">
               {new Intl.NumberFormat('es-AR', {
                 style: 'currency',
@@ -125,7 +126,13 @@ export default function Tienda() {
           ) : (
             <div className="product-grid">
               {filtrados.map((p) => (
-                <ProductCard key={p.id} producto={p} />
+                <ProductCard
+                  key={p.id}
+                  producto={p}
+                  categoriaLabel={
+                    categorias.find((c) => c.valor === p.categoria)?.etiqueta
+                  }
+                />
               ))}
             </div>
           )}

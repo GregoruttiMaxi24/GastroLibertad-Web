@@ -4,9 +4,10 @@ import { useAuth } from '../../contexts/AuthContext'
 import ProductosPanel from './ProductosPanel'
 import TestimoniosPanel from './TestimoniosPanel'
 import DisenioPanel from './DisenioPanel'
+import CategoriasPanel from './CategoriasPanel'
 import './Admin.css'
 
-type Tab = 'productos' | 'testimonios' | 'diseño'
+type Tab = 'productos' | 'testimonios' | 'diseño' | 'categorias'
 
 export default function AdminDashboard() {
   const { admin, logout } = useAuth()
@@ -34,6 +35,12 @@ export default function AdminDashboard() {
           Productos y stock
         </button>
         <button
+          className={tab === 'categorias' ? 'is-active' : ''}
+          onClick={() => setTab('categorias')}
+        >
+          Categorías
+        </button>
+        <button
           className={tab === 'testimonios' ? 'is-active' : ''}
           onClick={() => setTab('testimonios')}
         >
@@ -49,6 +56,7 @@ export default function AdminDashboard() {
 
       <div className="admin-panel__content">
         {tab === 'productos' && <ProductosPanel />}
+        {tab === 'categorias' && <CategoriasPanel />}
         {tab === 'testimonios' && <TestimoniosPanel />}
         {tab === 'diseño' && <DisenioPanel />}
       </div>

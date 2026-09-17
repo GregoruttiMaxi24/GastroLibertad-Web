@@ -5,13 +5,13 @@ import {
   actualizarProducto,
   eliminarProducto,
 } from '../../services/productos'
-import { CATEGORIAS } from '../../data/mockData'
+import { useCategorias } from '../../hooks/useCategorias'
 import ImageInput from '../../components/ImageInput'
-import type { Producto, Categoria, Especificacion } from '../../types'
+import type { Producto, Especificacion } from '../../types'
 
 const VACIO = {
   nombre: '',
-  categoria: 'cocinas-a-gas' as Categoria,
+  categoria: '',
   precio: 0,
   precioOriginal: 0,
   rating: 4.8,
@@ -46,6 +46,7 @@ function especificacionesATexto(especificaciones: Especificacion[]): string {
 
 export default function ProductosPanel() {
   const [productos, setProductos] = useState<Producto[]>([])
+  const { categorias } = useCategorias()
   const [cargando, setCargando] = useState(true)
   const [editando, setEditando] = useState<string | null>(null)
   const [form, setForm] = useState(VACIO)
@@ -165,7 +166,7 @@ export default function ProductosPanel() {
               <tr key={p.id}>
                 <td>{p.nombre}</td>
                 <td>
-                  {CATEGORIAS.find((c) => c.value === p.categoria)?.label}
+                  {categorias.find((c) => c.valor === p.categoria)?.etiqueta}
                 </td>
                 <td>
                   {p.precioOriginal && (
@@ -240,15 +241,15 @@ export default function ProductosPanel() {
               <select
                 value={form.categoria}
                 onChange={(e) =>
-                  setForm({
-                    ...form,
-                    categoria: e.target.value as Categoria,
-                  })
+                  setForm({ ...form, categoria: e.target.value })
                 }
               >
-                {CATEGORIAS.map((c) => (
-                  <option key={c.value} value={c.value}>
-                    {c.label}
+                <option value="" disabled>
+                  Seleccioná una categoría
+                </option>
+                {categorias.map((c) => (
+                  <option key={c.id} value={c.valor}>
+                    {c.etiqueta}
                   </option>
                 ))}
               </select>

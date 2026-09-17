@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import type { Producto } from '../types'
-import { CATEGORIAS } from '../data/mockData'
 import { imagenesConFallback } from '../lib/placeholder'
 import { IconWhatsApp } from './Icons'
 import './ProductCard.css'
@@ -11,10 +10,13 @@ const formatoPrecio = new Intl.NumberFormat('es-AR', {
   maximumFractionDigits: 0,
 })
 
-export default function ProductCard({ producto }: { producto: Producto }) {
-  const categoriaLabel = CATEGORIAS.find(
-    (c) => c.value === producto.categoria
-  )?.label
+export default function ProductCard({
+  producto,
+  categoriaLabel,
+}: {
+  producto: Producto
+  categoriaLabel?: string
+}) {
   const [imagenPrincipal] = imagenesConFallback(
     producto.imagenes,
     producto.categoria,

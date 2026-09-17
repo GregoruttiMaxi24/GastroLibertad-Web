@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container site-footer__grid">
         <div>
-          <h3>Gastrolibertad</h3>
+          <p className="footer-heading">Gastrolibertad</p>
           <p>Equipamos tu cocina y también tu casa.</p>
           <p>
             Consultá también por heladeras, aires acondicionados, bicis,
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4>Enlaces</h4>
+          <p className="footer-heading">Enlaces</p>
           <ul className="site-footer__links">
             <li>
               <Link to="/">Inicio</Link>
@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4>Dónde estamos</h4>
+          <p className="footer-heading">Dónde estamos</p>
           <p>Juan B. Justo 2550, entre España y Eva Perón, Libertad, Merlo</p>
           <p>
             Lunes a viernes 9:30 a 13:00 y 14:00 a 16:30
