@@ -38,10 +38,12 @@ export default function ProductCard({
         <Link to={`/tienda/${producto.id}`} className="product-card__nombre">
           <h3>{producto.nombre}</h3>
         </Link>
-        <div className="rating">
-          <span className="rating__stars">★★★★★</span>
-          {producto.rating} ({producto.reseñas})
-        </div>
+        {producto.reseñas > 0 && (
+          <div className="rating">
+            <span className="rating__stars">★★★★★</span>
+            {producto.rating} ({producto.reseñas})
+          </div>
+        )}
         <div className="product-card__precios">
           {producto.precioOriginal && (
             <span className="product-card__precio-original">

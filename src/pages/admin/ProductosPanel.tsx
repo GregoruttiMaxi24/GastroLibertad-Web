@@ -14,7 +14,7 @@ const VACIO = {
   categoria: '',
   precio: 0,
   precioOriginal: 0,
-  rating: 4.8,
+  rating: 0,
   reseñas: 0,
   stock: true,
   cantidadStock: 0,
@@ -291,6 +291,33 @@ export default function ProductosPanel() {
                     cantidadStock: Number(e.target.value),
                     stock: Number(e.target.value) > 0,
                   })
+                }
+              />
+            </label>
+
+            <label>
+              Calificación (0 a 5) — dejar en 0 si todavía no tiene reseñas
+              reales
+              <input
+                type="number"
+                min={0}
+                max={5}
+                step={0.1}
+                value={form.rating}
+                onChange={(e) =>
+                  setForm({ ...form, rating: Number(e.target.value) })
+                }
+              />
+            </label>
+
+            <label>
+              Cantidad de reseñas
+              <input
+                type="number"
+                min={0}
+                value={form.reseñas}
+                onChange={(e) =>
+                  setForm({ ...form, reseñas: Number(e.target.value) })
                 }
               />
             </label>

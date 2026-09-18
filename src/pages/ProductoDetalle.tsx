@@ -88,10 +88,12 @@ export default function ProductoDetalle() {
             <span className="producto-detalle__marca">Gastrolibertad</span>
             <h1>{producto.nombre}</h1>
 
-            <div className="rating">
-              <span className="rating__stars">★★★★★</span>
-              {producto.rating} ({producto.reseñas})
-            </div>
+            {producto.reseñas > 0 && (
+              <div className="rating">
+                <span className="rating__stars">★★★★★</span>
+                {producto.rating} ({producto.reseñas})
+              </div>
+            )}
 
             <div className="producto-detalle__aviso">
               <IconWarning size={16} />
