@@ -63,9 +63,6 @@ export default function HeroCarousel({
 
             {slide.tipo === 'marca' ? (
               <div className="hero__content">
-                <p className="hero__eyebrow">
-                  Envíos en Capital Federal y Zona Oeste del Gran Buenos Aires
-                </p>
                 <h1>Equipamos tu cocina y también tu casa</h1>
                 <p>
                   Cocinas, campanas y artículos para el hogar. Sin carrito:
