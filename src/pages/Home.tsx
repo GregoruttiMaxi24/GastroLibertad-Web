@@ -4,8 +4,9 @@ import { listarProductos } from '../services/productos'
 import { listarTestimonios } from '../services/testimonios'
 import { obtenerConfiguracion } from '../services/configuracion'
 import ProductCard from '../components/ProductCard'
+import HeroCarousel from '../components/HeroCarousel'
 import Reveal from '../components/Reveal'
-import { IconAward, IconUsers, IconStar, IconTruck, IconWhatsApp } from '../components/Icons'
+import { IconAward, IconUsers, IconStar, IconTruck, IconWhatsApp, IconReceipt, IconCard } from '../components/Icons'
 import type { Producto, Testimonio, ConfiguracionSitio } from '../types'
 import { CONFIGURACION } from '../data/mockData'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
@@ -39,37 +40,7 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="container hero__grid">
-          <div className="hero__main" style={{ backgroundImage: `url(${config.heroImagen})` }}>
-            <div className="hero__overlay" />
-            <div className="hero__content">
-              <p className="hero__eyebrow">
-                Envíos en Capital Federal y Zona Oeste del Gran Buenos Aires
-              </p>
-              <h1>Equipamos tu cocina y también tu casa</h1>
-              <p>
-                Cocinas, campanas y artículos para el hogar. Sin carrito:
-                consultás stock y precio por WhatsApp y te respondemos al
-                momento.
-              </p>
-              <p>
-                Consultá también por heladeras, aires acondicionados, bicis,
-                alacenas, muebles y más.
-              </p>
-              <div className="hero__actions">
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-whatsapp"
-                >
-                  <IconWhatsApp size={16} /> Consultar por WhatsApp
-                </a>
-                <Link to="/tienda" className="btn hero__btn-ver">
-                  Ver productos →
-                </Link>
-              </div>
-            </div>
-          </div>
+          <HeroCarousel config={config} ofertas={ofertas} />
 
           <div className="hero__side">
             <Link
@@ -165,6 +136,24 @@ export default function Home() {
             <div>
               <strong>Envíos propios</strong>
               <p>Envíos en Capital Federal y Zona Oeste del Gran Buenos Aires</p>
+            </div>
+          </div>
+          <div className="stats__item">
+            <span className="stats__icon">
+              <IconReceipt />
+            </span>
+            <div>
+              <strong>Facturación A, B y C</strong>
+              <p>Para tu casa o para tu negocio, con la factura que necesites.</p>
+            </div>
+          </div>
+          <div className="stats__item">
+            <span className="stats__icon">
+              <IconCard />
+            </span>
+            <div>
+              <strong>Todas las tarjetas</strong>
+              <p>Aceptamos todas las tarjetas de crédito y débito.</p>
             </div>
           </div>
         </section>
