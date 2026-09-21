@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { obtenerProducto } from '../services/productos'
+import { obtenerProducto, listarProductos } from '../services/productos'
 import { useCategorias } from '../hooks/useCategorias'
 import ProductGallery from '../components/ProductGallery'
+import ProductCard from '../components/ProductCard'
 import Reveal from '../components/Reveal'
 import { imagenesConFallback } from '../lib/placeholder'
 import {
@@ -27,14 +28,28 @@ const formatoPrecio = new Intl.NumberFormat('es-AR', {
 export default function ProductoDetalle() {
   const { id } = useParams<{ id: string }>()
   const [producto, setProducto] = useState<Producto | null>(null)
+  const [relacionados, setRelacionados] = useState<Producto[]>([])
   const [cargando, setCargando] = useState(true)
   const { categorias } = useCategorias()
 
   useEffect(() => {
     if (!id) return
     setCargando(true)
+    setRelacionados([])
+
     obtenerProducto(id)
-      .then(setProducto)
+      .then((p) => {
+        setProducto(p)
+        if (p) {
+          listarProductos().then((todos) => {
+            setRelacionados(
+              todos
+                .filter((x) => x.categoria === p.categoria && x.id !== p.id)
+                .slice(0, 4)
+            )
+          })
+        }
+      })
       .finally(() => setCargando(false))
   }, [id])
 
@@ -180,6 +195,25 @@ export default function ProductoDetalle() {
           </div>
         </div>
       </Reveal>
+
+      {relacionados.length > 0 && (
+        <Reveal>
+          <section className="producto-relacionados">
+            <h2>Productos relacionados</h2>
+            <div className="product-grid">
+              {relacionados.map((p) => (
+                <ProductCard
+                  key={p.id}
+                  producto={p}
+                  categoriaLabel={
+                    categorias.find((c) => c.valor === p.categoria)?.etiqueta
+                  }
+                />
+              ))}
+            </div>
+          </section>
+        </Reveal>
+      )}
     </section>
   )
 }
