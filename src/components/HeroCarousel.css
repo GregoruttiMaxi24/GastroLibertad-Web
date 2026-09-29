@@ -2,7 +2,7 @@
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  min-height: 420px;
+  min-height: 460px;
 }
 
 .hero-carousel__slide {

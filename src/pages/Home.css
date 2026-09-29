@@ -32,7 +32,7 @@
 
 .hero__content {
   position: relative;
-  padding: 40px;
+  padding: 40px 40px 56px;
   max-width: 520px;
   color: #fff;
 }
@@ -58,7 +58,7 @@
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .hero__btn-ver {
