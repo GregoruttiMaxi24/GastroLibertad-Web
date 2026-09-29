@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { obtenerProducto, listarProductos } from '../services/productos'
 import { useCategorias } from '../hooks/useCategorias'
+import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import ProductGallery from '../components/ProductGallery'
 import ProductCard from '../components/ProductCard'
 import Reveal from '../components/Reveal'
@@ -18,6 +19,7 @@ import type { Producto } from '../types'
 import './ProductoDetalle.css'
 
 const WHATSAPP_BASE = 'https://wa.me/5491132527581?text='
+const SITE_URL = 'https://www.gastrolibertad.com.ar'
 
 const formatoPrecio = new Intl.NumberFormat('es-AR', {
   style: 'currency',
@@ -31,6 +33,43 @@ export default function ProductoDetalle() {
   const [relacionados, setRelacionados] = useState<Producto[]>([])
   const [cargando, setCargando] = useState(true)
   const { categorias } = useCategorias()
+
+  useDocumentMeta(
+    producto?.nombre ?? 'Producto',
+    producto?.descripcion,
+    id ? `/tienda/${id}` : undefined
+  )
+
+  // Datos estructurados de producto (precio, stock) para resultados de Google.
+  useEffect(() => {
+    if (!producto) return
+
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: producto.nombre,
+      description: producto.descripcion || producto.descripcionLarga,
+      image: producto.imagenes[0],
+      sku: producto.id,
+      brand: { '@type': 'Brand', name: 'Gastrolibertad' },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'ARS',
+        price: producto.precio,
+        availability: producto.stock
+          ? 'https://schema.org/InStock'
+          : 'https://schema.org/OutOfStock',
+        url: `${SITE_URL}/tienda/${producto.id}`,
+      },
+    })
+    document.head.appendChild(script)
+
+    return () => {
+      document.head.removeChild(script)
+    }
+  }, [producto])
 
   useEffect(() => {
     if (!id) return

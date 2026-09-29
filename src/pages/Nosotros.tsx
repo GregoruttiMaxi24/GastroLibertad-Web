@@ -2,12 +2,19 @@ import { useEffect, useState } from 'react'
 import { IconWhatsApp } from '../components/Icons'
 import { obtenerConfiguracion } from '../services/configuracion'
 import { CONFIGURACION } from '../data/mockData'
+import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import './Estaticas.css'
 
 const WHATSAPP_URL =
   'https://wa.me/5491132527581?text=%C2%A1Hola%20Gastrolibertad!%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20productos.'
 
 export default function Nosotros() {
+  useDocumentMeta(
+    'Nosotros',
+    'Más de 10 años equipando cocinas y hogares en Libertad, Merlo. Conocé la historia de Gastrolibertad y por qué más de 1000 clientes ya confiaron en nosotros.',
+    '/nosotros'
+  )
+
   const [imagen, setImagen] = useState(CONFIGURACION.nosotrosImagen)
 
   useEffect(() => {

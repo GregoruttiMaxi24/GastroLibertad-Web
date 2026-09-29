@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { listarProductos } from '../services/productos'
 import { useCategorias } from '../hooks/useCategorias'
+import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import ProductCard from '../components/ProductCard'
 import type { Producto } from '../types'
 import './Tienda.css'
@@ -10,6 +11,12 @@ const PRECIO_MIN = 0
 const PRECIO_MAX = 700000
 
 export default function Tienda() {
+  useDocumentMeta(
+    'Productos',
+    'Catálogo de cocinas a gas y eléctricas, campanas extractoras, electrodomésticos, bicicletas, audio y más. Consultá precio y stock por WhatsApp.',
+    '/tienda'
+  )
+
   const [productos, setProductos] = useState<Producto[]>([])
   const [cargando, setCargando] = useState(true)
   const { categorias } = useCategorias()

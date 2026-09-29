@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { IconMapPin, IconClock, IconWhatsApp } from '../components/Icons'
 import { IconTruck } from '../components/Icons'
+import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import './Estaticas.css'
 
 const DIRECCION = 'Juan B. Justo 2550, Libertad, Merlo, Buenos Aires'
@@ -12,6 +13,12 @@ const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURICo
 )}`
 
 export default function Contacto() {
+  useDocumentMeta(
+    'Contacto',
+    'Contactate con Gastrolibertad por WhatsApp. Estamos en Juan B. Justo 2550, Libertad, Merlo. Envíos en Capital Federal y Zona Oeste del GBA.',
+    '/contacto'
+  )
+
   const [producto, setProducto] = useState('')
   const [detalle, setDetalle] = useState('')
 
