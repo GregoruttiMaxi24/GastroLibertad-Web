@@ -12,7 +12,6 @@ import { CONFIGURACION } from '../data/mockData'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import { useCategorias } from '../hooks/useCategorias'
 import './Home.css'
-
 const WHATSAPP_URL =
   'https://wa.me/5491132527581?text=%C2%A1Hola%20Gastrolibertad!%20Quiero%20hacer%20una%20consulta%20sobre%20sus%20productos.'
 

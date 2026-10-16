@@ -9,12 +9,14 @@ import Contacto from './pages/Contacto'
 import AdminLogin from './pages/admin/AdminLogin'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import ProtectedRoute from './pages/admin/ProtectedRoute'
-
+import { Analytics } from "@vercel/analytics/next"
 function App() {
   return (
+    
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          <Analytics />
           <Route element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="tienda" element={<Tienda />} />
